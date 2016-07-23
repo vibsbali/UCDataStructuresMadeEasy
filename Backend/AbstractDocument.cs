@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Backend
@@ -7,14 +8,26 @@ namespace Backend
     public abstract class AbstractDocument
     {
         public string Text { get; }
+        private IEnumerable<string> sentences; 
+
         /** Return the number of words in this document */
         public int GetNumberOfWords { get; private set; }
 
         /** Return the number of sentences in this document */
-        public int GetNumberOfSentences { get; private set; }
+        public virtual int GetNumberOfSentences()
+        {
+            var regex = new Regex("[.?!]+");
+
+            sentences = regex.Split(Text);
+            return sentences.Where(sentence => sentence.Length > 0).ToArray().Length;
+        }
 
         /** Return the number of syllables in this document */
-        public int GetNumberOfSyllables { get; private set; }
+
+        public int GetNumberOfSyllables
+        {
+            get; private set;
+        }
 
         /** Create a new document from the given text.
         * Because this class is abstract, this is used only from subclasses.
@@ -30,18 +43,20 @@ namespace Backend
             Text = text;
         }
 
-        /** Returns the tokens that match the regex pattern from the document 
-	 * text string.
+        /** Returns the tokens that match the regex pattern from the document text string.
 	 * @param pattern A regular expression string specifying the 
 	 *   token pattern desired
 	 * @return A List of tokens from the document text that match the regex 
 	 *   pattern
 	 */
-        protected IEnumerable<string> GetTokens(string pattern)
+        public IEnumerable<string> GetTokens(Regex pattern)
         {
-            var regex = new Regex(pattern);
+            if (pattern == null)
+            {
+                throw new ArgumentNullException();
+            }
 
-            var result = regex.Split(Text);
+            var result = pattern.Split(Text);
             return result;
         }
 
