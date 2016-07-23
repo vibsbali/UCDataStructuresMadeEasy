@@ -21,11 +21,11 @@ namespace WindowsFormsApplication1
         
         private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != ' ')
+            if (e.KeyChar != ' ' && (e.KeyChar >= 'A' && e.KeyChar <= 'z'))
             {
                 word.Append(e.KeyChar);
             }
-            else
+            else if (e.KeyChar == ' ' && word.Length > 0)
             {
                 MessageBox.Show(word.ToString());
                 word.Clear();
@@ -33,6 +33,11 @@ namespace WindowsFormsApplication1
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnWordCount_Click(object sender, EventArgs e)
         {
 
         }

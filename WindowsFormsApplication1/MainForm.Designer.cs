@@ -61,6 +61,7 @@
             this.btnWordCount.TabIndex = 3;
             this.btnWordCount.Text = "Count Words";
             this.btnWordCount.UseVisualStyleBackColor = true;
+            this.btnWordCount.Click += new System.EventHandler(this.btnWordCount_Click);
             // 
             // FrmTextEditor
             // 
