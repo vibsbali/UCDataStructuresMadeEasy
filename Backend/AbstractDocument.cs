@@ -65,7 +65,7 @@ namespace Backend
 	 * @return A List of tokens from the document text that match the regex 
 	 *   pattern
 	 */
-        public IEnumerable<string> GetTokens(Regex pattern)
+        public virtual IEnumerable<string> GetTokens(Regex pattern)
         {
             if (pattern == null)
             {
@@ -77,7 +77,7 @@ namespace Backend
         }
 
         //returns number Of Syllables in a word
-        protected int CountSyllables(string word)
+        public virtual int CountSyllables(string word)
         {
             if (word == null)
             {
