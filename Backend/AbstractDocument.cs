@@ -8,25 +8,41 @@ namespace Backend
     public abstract class AbstractDocument
     {
         public string Text { get; }
-        private IEnumerable<string> sentences; 
+        private IEnumerable<string> sentences;
+        private List<string> words;
 
         /** Return the number of words in this document */
-        public int GetNumberOfWords { get; private set; }
+        public virtual int GetNumberOfWords()
+        {
+            var regex = new Regex("[a-zA-Z]+");
+            words = new List<string>();
+
+            //If you like to match the first occurence then use Match method otherwise use matches
+            MatchCollection result = regex.Matches(Text);
+            foreach (var match in result)
+            {
+                words.Add(match.ToString());
+            }
+            
+            return words.Count;
+        }
 
         /** Return the number of sentences in this document */
         public virtual int GetNumberOfSentences()
         {
             var regex = new Regex("[.?!]+");
 
-            sentences = regex.Split(Text);
-            return sentences.Where(sentence => sentence.Length > 0).ToArray().Length;
+            sentences = regex.Split(Text).Where(sentence => sentence.Length > 0);
+            return sentences.ToArray().Length;
         }
 
         /** Return the number of syllables in this document */
-
-        public int GetNumberOfSyllables
+        public virtual int GetNumberOfSyllables()
         {
-            get; private set;
+            var regex = new Regex("[aeiouy]+[^$e(,.:;!?)]");
+            var numberOfSyllables = regex.Matches(Text).Count;
+
+            return numberOfSyllables;
         }
 
         /** Create a new document from the given text.
@@ -60,19 +76,26 @@ namespace Backend
             return result;
         }
 
+        //returns number Of Syllables in a word
         protected int CountSyllables(string word)
         {
-            // TODO: Implement this method so that you can call it from the 
-            // getNumSyllables method in BasicDocument (module 1) and 
-            // EfficientDocument (module 2).
-            return 0;
+            if (word == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            var regex = new Regex("[aeiouy]+[^$e(,.:;!?)]");
+            var numberOfSyllables = regex.Matches(word).Count;
+
+            return numberOfSyllables;
         }
 
         /** return the Flesch readability score of this document */
-        public double GetFleschScore()
+        public virtual double GetFleschScore()
         {
-            // TODO: Implement this method in week 1
-            return 0.0;
+            return 206.835 - (1.015*((double)GetNumberOfWords()/GetNumberOfSentences())) -
+                   (84.6*((double)GetNumberOfSyllables()/GetNumberOfWords()));
+            
         }
     }
 }
