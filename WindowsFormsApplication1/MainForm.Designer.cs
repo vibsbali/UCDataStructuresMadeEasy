@@ -30,7 +30,7 @@
         {
             this.lstAutoComplete = new System.Windows.Forms.ListBox();
             this.txtEditor = new System.Windows.Forms.TextBox();
-            this.btnWordCount = new System.Windows.Forms.Button();
+            this.btnPerformAnalytics = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstAutoComplete
@@ -53,22 +53,22 @@
             this.txtEditor.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.txtEditor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
             // 
-            // btnWordCount
+            // btnPerformAnalytics
             // 
-            this.btnWordCount.Location = new System.Drawing.Point(248, 282);
-            this.btnWordCount.Name = "btnWordCount";
-            this.btnWordCount.Size = new System.Drawing.Size(124, 26);
-            this.btnWordCount.TabIndex = 3;
-            this.btnWordCount.Text = "Count Words";
-            this.btnWordCount.UseVisualStyleBackColor = true;
-            this.btnWordCount.Click += new System.EventHandler(this.btnWordCount_Click);
+            this.btnPerformAnalytics.Location = new System.Drawing.Point(248, 282);
+            this.btnPerformAnalytics.Name = "btnPerformAnalytics";
+            this.btnPerformAnalytics.Size = new System.Drawing.Size(124, 26);
+            this.btnPerformAnalytics.TabIndex = 3;
+            this.btnPerformAnalytics.Text = "Perform Analytics";
+            this.btnPerformAnalytics.UseVisualStyleBackColor = true;
+            this.btnPerformAnalytics.Click += new System.EventHandler(this.btnWordCount_Click);
             // 
             // FrmTextEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 432);
-            this.Controls.Add(this.btnWordCount);
+            this.Controls.Add(this.btnPerformAnalytics);
             this.Controls.Add(this.txtEditor);
             this.Controls.Add(this.lstAutoComplete);
             this.Name = "FrmTextEditor";
@@ -81,7 +81,7 @@
         #endregion
         private System.Windows.Forms.ListBox lstAutoComplete;
         private System.Windows.Forms.TextBox txtEditor;
-        private System.Windows.Forms.Button btnWordCount;
+        private System.Windows.Forms.Button btnPerformAnalytics;
     }
 }
 
