@@ -7,7 +7,7 @@ namespace Backend
 {
     public abstract class AbstractDocument
     {
-        public string Text { get; }
+        public string Text { get; set; }
         private IEnumerable<string> sentences;
         private List<string> words;
 
@@ -30,6 +30,7 @@ namespace Backend
         /** Return the number of sentences in this document */
         public virtual int GetNumberOfSentences()
         {
+            //We could also use new Regex("[^.?!]") along with Matches function as we did in GetNumberOfWords method
             var regex = new Regex("[.?!]+");
 
             sentences = regex.Split(Text).Where(sentence => sentence.Length > 0);
@@ -72,8 +73,12 @@ namespace Backend
                 throw new ArgumentNullException();
             }
 
-            var result = pattern.Split(Text);
-            return result;
+            MatchCollection result = pattern.Matches(Text);
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach (var resultSet in result)
+            {
+                yield return resultSet.ToString();
+            }            
         }
 
         //returns number Of Syllables in a word
