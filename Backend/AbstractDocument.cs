@@ -8,7 +8,7 @@ namespace Backend
     public abstract class AbstractDocument
     {
         public string Text { get; set; }
-        private IEnumerable<string> sentences;
+        public IEnumerable<string> GetSentences { get; private set; }
         private List<string> words;
 
         /** Return the number of words in this document */
@@ -33,8 +33,8 @@ namespace Backend
             //We could also use new Regex("[^.?!]") along with Matches function as we did in GetNumberOfWords method
             var regex = new Regex("[.?!]+");
 
-            sentences = regex.Split(Text).Where(sentence => sentence.Length > 0);
-            return sentences.ToArray().Length;
+            GetSentences = regex.Split(Text).Where(sentence => sentence.Length > 0);
+            return GetSentences.ToArray().Length;
         }
 
         /** Return the number of syllables in this document */
@@ -66,14 +66,14 @@ namespace Backend
 	 * @return A List of tokens from the document text that match the regex 
 	 *   pattern
 	 */
-        public virtual IEnumerable<string> GetTokens(Regex pattern)
+        public virtual IEnumerable<string> GetTokens(Regex pattern, string text)
         {
             if (pattern == null)
             {
                 throw new ArgumentNullException();
             }
 
-            MatchCollection result = pattern.Matches(Text);
+            MatchCollection result = pattern.Matches(text);
             // ReSharper disable once LoopCanBeConvertedToQuery
             foreach (var resultSet in result)
             {
@@ -100,6 +100,11 @@ namespace Backend
         {
             return 206.835 - (1.015*((double)GetNumberOfWords()/GetNumberOfSentences())) -
                    (84.6*((double)GetNumberOfSyllables()/GetNumberOfWords()));
+        }
+
+        public List<string> GetWords()
+        {
+            return words;
         }
     }
 }

@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="AbstractDocument.cs" />
     <Compile Include="Document.cs" />
+    <Compile Include="IMarkovTextGeneration.cs" />
+    <Compile Include="MarkovTextGeneration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

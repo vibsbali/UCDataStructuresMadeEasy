@@ -35,6 +35,7 @@
             this.lblSyllables = new System.Windows.Forms.Label();
             this.lblSentence = new System.Windows.Forms.Label();
             this.lblWelschScore = new System.Windows.Forms.Label();
+            this.btnGenerateText = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstAutoComplete
@@ -107,11 +108,22 @@
             this.lblWelschScore.TabIndex = 7;
             this.lblWelschScore.Text = "Welsch Score";
             // 
+            // btnGenerateText
+            // 
+            this.btnGenerateText.Location = new System.Drawing.Point(371, 293);
+            this.btnGenerateText.Name = "btnGenerateText";
+            this.btnGenerateText.Size = new System.Drawing.Size(125, 26);
+            this.btnGenerateText.TabIndex = 8;
+            this.btnGenerateText.Text = "Generate Text";
+            this.btnGenerateText.UseVisualStyleBackColor = true;
+            this.btnGenerateText.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmTextEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 432);
+            this.Controls.Add(this.btnGenerateText);
             this.Controls.Add(this.lblWelschScore);
             this.Controls.Add(this.lblSentence);
             this.Controls.Add(this.lblSyllables);
@@ -134,6 +146,7 @@
         private System.Windows.Forms.Label lblSyllables;
         private System.Windows.Forms.Label lblSentence;
         private System.Windows.Forms.Label lblWelschScore;
+        private System.Windows.Forms.Button btnGenerateText;
     }
 }
 
