@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{01E8993F-D106-422A-B52D-4A5ECCD7C815}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{DAA06DF5-E994-484A-9B4A-0D92E96D1662}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataStructureMadeEasy.Console</RootNamespace>
-    <AssemblyName>DataStructureMadeEasy.Console</AssemblyName>
+    <RootNamespace>DataStructuresMadeEasy.Bst</RootNamespace>
+    <AssemblyName>DataStructuresMadeEasy.Bst</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,21 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Bst.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Backend\DataStructuresMadeEasy.Backend.csproj">
-      <Project>{4478b3f4-854e-4dca-bb8f-069aeb3dd277}</Project>
-      <Name>DataStructuresMadeEasy.Backend</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataStructuresMadeEasy.Bst\DataStructuresMadeEasy.Bst.csproj">
-      <Project>{DAA06DF5-E994-484A-9B4A-0D92E96D1662}</Project>
-      <Name>DataStructuresMadeEasy.Bst</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
