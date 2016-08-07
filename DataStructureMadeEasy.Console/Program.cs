@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.ComponentModel;
+using System.Runtime.InteropServices;
 using Backend;
 using DataStructuresMadeEasy.Bst;
 
@@ -8,20 +9,14 @@ namespace DataStructureMadeEasy.Console
     {
         static void Main()
         {
+            var trie = new Trie();
 
-            var bst = new Bst<int>();
-            bst.Add(8);
-            bst.Add(5);
-            bst.Add(10);
-            bst.Add(2);
-            bst.Add(7);
-            bst.Add(6);
+            
 
-            //bst.Remove(5);
+            
 
-           // System.Console.WriteLine(bst.Count);
 
-           bst.PrintInOrderTraversal();
+
             //var name = "This is a test.  How many???  " + "Senteeeeeeeeeences are here... there should be 5!  Right?";
             //var name = "sentence, with, lots, of, commas.!  "
             //    + "(And some poaren)).  The output is: 7.5.";
@@ -43,6 +38,15 @@ namespace DataStructureMadeEasy.Console
 
             System.Console.WriteLine(document.GetNumberOfSentences());
             System.Console.WriteLine(document.GetNumberOfWords());
+            foreach (var word in document.GetWords())
+            {
+                trie.Add(word);
+            }
+            foreach (var word in document.GetWords())
+            {
+                System.Console.Write("Word is {0} ", word);
+                System.Console.WriteLine(trie.Get(word));
+            }
             System.Console.WriteLine(document.GetNumberOfSyllables());
             System.Console.WriteLine(document.GetFleschScore());
         }
